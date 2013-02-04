@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Fruit.h"
+#import "Vegetable.h"
 
 @interface ViewController ()
 
@@ -21,14 +21,38 @@
 	// Do any additional setup after loading the view, typically from a nib.
     _cart = [NSMutableArray arrayWithCapacity:0];
     
-    for(int i = 0; i < 50; i++){
-        NSString * fruitName = [NSString stringWithFormat:@"Banana %d", i];
+    for(int i = 0; i < 49; i++){
+        NSString * vegName = [NSString stringWithFormat:@"Potato %d", i];
         
         if((i % 10) == 0){
-            fruitName = [NSString stringWithFormat:@"Free Banana %d", i];
+            vegName = [NSString stringWithFormat:@"Free Potato %d", i];
         }
-        Fruit * anonFruit = [[Fruit alloc] initWithWithName:fruitName andColor:@"Yellow" andShape:@"Curved"];
-        [_cart addObject:anonFruit];
+        Vegetable * anonVeg = [[Vegetable alloc] initWithWithName:vegName andColor:@"Yellow" andShape:@"Oval"];
+        [_cart addObject:anonVeg];
+        i++;
+        if(i ==50 ){
+            break;
+        }
+        NSString * vegName2 = [NSString stringWithFormat:@"Pumpkin %d", i];
+        
+        if((i % 10) == 0){
+            vegName2 = [NSString stringWithFormat:@"Free Pumpkin %d", i];
+        }
+        Vegetable * anonVeg2 = [[Vegetable alloc] initWithWithName:vegName2 andColor:@"Orange" andShape:@"Round"];
+        [_cart addObject:anonVeg2];
+        i++;
+        if(i ==50 ){
+            break;
+        }
+        NSString * vegName3 = [NSString stringWithFormat:@"Onion %d", i];
+        
+        if((i % 10) == 0){
+            vegName3 = [NSString stringWithFormat:@"Free Onion %d", i];
+        }
+        Vegetable * anonVeg3 = [[Vegetable alloc] initWithWithName:vegName3 andColor:@"White" andShape:@"Round"];
+        [_cart addObject:anonVeg3];
+        
+        
     }
     
     
@@ -46,7 +70,7 @@
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Fruit";
+    return @"Vegtable";
 }
 
 -(int) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -61,10 +85,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TableViewCell"];
     }
     
-    Fruit * tempFruit = [_cart objectAtIndex:indexPath.row];
+    Vegetable * tempVeg = [_cart objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [tempFruit name];
-    cell.detailTextLabel.text = [tempFruit color];
+    cell.textLabel.text = [tempVeg name];
+    cell.detailTextLabel.text = [tempVeg color];
     return cell;
 }
 
